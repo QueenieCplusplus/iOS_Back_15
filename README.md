@@ -65,4 +65,4 @@ PN, 本地推播
 
     版主私心：普普貓每 61 秒提醒一次餵食通知。
 
-    ![]()https://raw.githubusercontent.com/QueenieCplusplus/iOS_Back_15/main/timeInterval.png
+    ![](https://raw.githubusercontent.com/QueenieCplusplus/iOS_Back_15/main/timeInterval.png)
