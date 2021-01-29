@@ -60,3 +60,9 @@ PN, 本地推播
 2. ask for auth.
 
   ![](https://raw.githubusercontent.com/QueenieCplusplus/iOS_Back_15/main/output%201.png)
+
+3. time interval and repeat.
+
+    版主私心：普普貓每 61 秒提醒一次餵食通知。
+
+    ![]()https://raw.githubusercontent.com/QueenieCplusplus/iOS_Back_15/main/timeInterval.png
