@@ -8,53 +8,53 @@ PN, 本地推播
 1. code.
 
 
-    class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+              class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
 
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            // Override point for customization after application launch.
+                func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+                    // Override point for customization after application launch.
 
-            // 推播中心的迸發執行緒
-            // ask user the autherization
-            let nc = UNUserNotificationCenter.current()
-            nc.delegate = self
+                    // 推播中心的迸發執行緒
+                    // ask user the autherization
+                    let nc = UNUserNotificationCenter.current()
+                    nc.delegate = self
 
-            nc.requestAuthorization(options: [.alert, .sound, .badge]){
+                    nc.requestAuthorization(options: [.alert, .sound, .badge]){
 
-                (granted, error) in
-                if granted == false {
-                    print(" 權限不足，Auth is limited.")
+                        (granted, error) in
+                        if granted == false {
+                            print(" 權限不足，Auth is limited.")
+                        }
+
+                    }
+
+                    notifyUser()
+                    return true
                 }
 
-            }
+                // design the notify body
 
-            notifyUser()
-            return true
-        }
+                func notifyUser(){
 
-        // design the notify body
+                    let txt = UNMutableNotificationContent()
+                    txt.title = "這是來自 Kate 的推播放喔！"
+                    txt.body = "普普貓問：今天有定時定樣餵食我嗎？"
+                    txt.badge = 3
+                    txt.sound = UNNotificationSound.default
 
-        func notifyUser(){
+                    let tg = UNTimeIntervalNotificationTrigger(timeInterval: 61, repeats: true)
+                    let req = UNNotificationRequest(identifier: "mytargetid", content: txt, trigger: tg)
 
-            let txt = UNMutableNotificationContent()
-            txt.title = "這是來自 Kate 的推播放喔！"
-            txt.body = "普普貓問：今天有定時定樣餵食我嗎？"
-            txt.badge = 3
-            txt.sound = UNNotificationSound.default
+                    // 推播中心的迸發執行緒
+                    let nc = UNUserNotificationCenter.current()
+                    nc.delegate = self
+                    nc.add(req)
 
-            let tg = UNTimeIntervalNotificationTrigger(timeInterval: 61, repeats: true)
-            let req = UNNotificationRequest(identifier: "mytargetid", content: txt, trigger: tg)
+                }
 
-            // 推播中心的迸發執行緒
-            let nc = UNUserNotificationCenter.current()
-            nc.delegate = self
-            nc.add(req)
-
-        }
-
-        // 上方為銀幕鎖上或是 Home 時的推播狀態設定。
-        // 前景 app 出現本地推播通知要額外實作 userNotificationCenter。
+                // 上方為銀幕鎖上或是 Home 時的推播狀態設定。
+                // 前景 app 出現本地推播通知要額外實作 userNotificationCenter。
 
 
 2. ask for auth.
