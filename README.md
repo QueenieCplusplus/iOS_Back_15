@@ -51,3 +51,8 @@ PN, 本地推播
 
         // 上方為銀幕鎖上或是 Home 時的推播狀態設定。
         // 前景 app 出現本地推播通知要額外實作 userNotificationCenter。
+
+
+2. ask for auth.
+
+  ![](https://raw.githubusercontent.com/QueenieCplusplus/iOS_Back_15/main/output%201.png)
